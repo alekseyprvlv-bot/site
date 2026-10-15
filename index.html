@@ -80,13 +80,13 @@ section{padding:68px 0}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
-<link rel="canonical" href="https://perevalov-zemly.ru/">
+<link rel="canonical" href="http://perevalov-zemly.ru/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Алексей Перевалов — земельный юрист, Москва">
 <meta property="og:description" content="ППТ и ПМТ, кадастровый учёт, реестровые ошибки, земельные споры и суды. Консультация земельного юриста в Москве.">
-<meta property="og:url" content="https://perevalov-zemly.ru/">
-<meta property="og:image" content="https://perevalov-zemly.ru/images/alexey-perevalov-zemelnyi-yurist.jpg">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LegalService", "name": "Алексей Перевалов — земельный юрист", "description": "Земельный и градостроительный юрист в Москве: ППТ, ПМТ, кадастровый учёт, реестровые ошибки, суды, взаимодействие с органами власти.", "url": "https://perevalov-zemly.ru/", "telephone": "+7 914 997-99-92", "email": "lega-87@mail.ru", "image": "https://perevalov-zemly.ru/images/alexey-perevalov-zemelnyi-yurist.jpg", "areaServed": ["Москва", "Московская область"], "address": {"@type": "PostalAddress", "addressLocality": "Москва", "addressCountry": "RU"}, "priceRange": "от 9 000 ₽"}</script>
+<meta property="og:url" content="http://perevalov-zemly.ru/">
+<meta property="og:image" content="http://perevalov-zemly.ru/images/alexey-perevalov-zemelnyi-yurist.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LegalService", "name": "Алексей Перевалов — земельный юрист", "description": "Земельный и градостроительный юрист в Москве: ППТ, ПМТ, кадастровый учёт, реестровые ошибки, суды, взаимодействие с органами власти.", "url": "http://perevalov-zemly.ru/", "telephone": "+7 914 997-99-92", "email": "lega-87@mail.ru", "image": "http://perevalov-zemly.ru/images/alexey-perevalov-zemelnyi-yurist.jpg", "areaServed": ["Москва", "Московская область"], "address": {"@type": "PostalAddress", "addressLocality": "Москва", "addressCountry": "RU"}, "priceRange": "от 9 000 ₽"}</script>
 </head>
 <body>
 <header><div class="wrap"><a class="logo" href="#top">Алексей Перевалов</a>
@@ -155,16 +155,23 @@ section{padding:68px 0}
 <label>Телефон<input name="p" type="tel" required autocomplete="tel"></label>
 <label>Что нужно решить<select name="c"><option>Строительство и согласование документации</option><option>ППТ / ПМТ</option><option>Кадастровый учёт, реестровые ошибки</option><option>Земельный спор, суд</option><option>Другое</option></select></label>
 <label>Сообщение (необязательно)<textarea name="m"></textarea></label>
-<button class="btn" type="submit">Отправить заявку</button>
-<p class="fine">Кнопка откроет письмо в вашей почтовой программе с заполненной заявкой.</p>
+<p class="fine" style="margin-top:4px">Отправить заявку удобным способом:</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px"><button class="btn" type="submit" data-ch="wa">WhatsApp</button><button class="btn" type="submit" data-ch="tg">Telegram</button></div>
+<p class="fine" id="fnote">Откроется чат со мной с готовым текстом заявки — останется нажать «Отправить».</p>
 </form>
 </div></div></section>
 </main>
 <footer><div class="wrap">© Алексей Перевалов, земельный юрист. Москва.</div></footer>
 <script>
-document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();var d=new FormData(this);
-var b='Имя: '+d.get('n')+'\nТелефон: '+d.get('p')+'\nТема: '+d.get('c')+'\n\n'+d.get('m');
-location.href='mailto:lega-87@mail.ru?subject='+encodeURIComponent('Заявка с сайта')+'&body='+encodeURIComponent(b)});
+(function(){var f=document.getElementById('f'),ch='wa',note=document.getElementById('fnote');
+f.querySelectorAll('button[data-ch]').forEach(function(b){b.addEventListener('click',function(){ch=b.dataset.ch})});
+f.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(f);
+var t='Здравствуйте! Заявка с сайта perevalov-zemly.ru\nИмя: '+d.get('n')+'\nТелефон: '+d.get('p')+'\nТема: '+d.get('c')+(d.get('m')?'\nСообщение: '+d.get('m'):'');
+if(ch==='wa'){window.open('https://wa.me/79149979992?text='+encodeURIComponent(t),'_blank');return}
+var go=function(){window.open('https://t.me/+79149979992','_blank')};
+note.textContent='Текст заявки скопирован. В открывшемся чате Telegram вставьте его (долгое нажатие → «Вставить») и отправьте.';
+if(navigator.clipboard){navigator.clipboard.writeText(t).then(go,go)}else{go()}
+});})();
 </script>
 </body>
 </html>
