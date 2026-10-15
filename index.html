@@ -149,14 +149,14 @@ section{padding:68px 0}
 <h2>Расскажите о вашем участке</h2>
 <a class="big" href="tel:+79149979992">+7 914 997 99 92</a>
 <a class="big" href="mailto:lega-87@mail.ru">lega-87@mail.ru</a>
-<div class="msgs"><a href="https://t.me/+79149979992" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79149979992" target="_blank" rel="noopener">WhatsApp</a><a href="https://max.ru/" target="_blank" rel="noopener">Max</a></div>
+<div class="msgs"><a href="https://t.me/+79149979992" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79149979992" target="_blank" rel="noopener">WhatsApp</a><a href="https://max.ru/u/f9LHodD0cOKVvDpGf3bYZXX6-hyGBotBoMjLE-zgJSxT7L2M-C0vEMTj4BA" target="_blank" rel="noopener">Max</a></div>
 <form id="f">
 <label>Ваше имя<input name="n" required autocomplete="name"></label>
 <label>Телефон<input name="p" type="tel" required autocomplete="tel"></label>
 <label>Что нужно решить<select name="c"><option>Строительство и согласование документации</option><option>ППТ / ПМТ</option><option>Кадастровый учёт, реестровые ошибки</option><option>Земельный спор, суд</option><option>Другое</option></select></label>
 <label>Сообщение (необязательно)<textarea name="m"></textarea></label>
 <p class="fine" style="margin-top:4px">Отправить заявку удобным способом:</p>
-<div style="display:flex;flex-wrap:wrap;gap:10px"><button class="btn" type="submit" data-ch="wa">WhatsApp</button><button class="btn" type="submit" data-ch="tg">Telegram</button></div>
+<div style="display:flex;flex-wrap:wrap;gap:10px"><button class="btn" type="submit" data-ch="wa">WhatsApp</button><button class="btn" type="submit" data-ch="tg">Telegram</button><button class="btn" type="submit" data-ch="max">Max</button></div>
 <p class="fine" id="fnote">Откроется чат со мной с готовым текстом заявки — останется нажать «Отправить».</p>
 </form>
 </div></div></section>
@@ -168,8 +168,9 @@ f.querySelectorAll('button[data-ch]').forEach(function(b){b.addEventListener('cl
 f.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(f);
 var t='Здравствуйте! Заявка с сайта perevalov-zemly.ru\nИмя: '+d.get('n')+'\nТелефон: '+d.get('p')+'\nТема: '+d.get('c')+(d.get('m')?'\nСообщение: '+d.get('m'):'');
 if(ch==='wa'){window.open('https://wa.me/79149979992?text='+encodeURIComponent(t),'_blank');return}
-var go=function(){window.open('https://t.me/+79149979992','_blank')};
-note.textContent='Текст заявки скопирован. В открывшемся чате Telegram вставьте его (долгое нажатие → «Вставить») и отправьте.';
+var u=ch==='max'?'https://max.ru/u/f9LHodD0cOKVvDpGf3bYZXX6-hyGBotBoMjLE-zgJSxT7L2M-C0vEMTj4BA':'https://t.me/+79149979992',nm=ch==='max'?'Max':'Telegram';
+var go=function(){window.open(u,'_blank')};
+note.textContent='Текст заявки скопирован. В открывшемся чате '+nm+' вставьте его (долгое нажатие → «Вставить») и отправьте.';
 if(navigator.clipboard){navigator.clipboard.writeText(t).then(go,go)}else{go()}
 });})();
 </script>
