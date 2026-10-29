@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zemlya-i-zakon.ru/sitemap.xml
