@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://perevalov-zemly.ru/sitemap.xml
+Sitemap: https://zemlya-i-zakon.ru/sitemap.xml
